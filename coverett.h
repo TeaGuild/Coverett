@@ -52,7 +52,7 @@ typedef struct{
 
 typedef struct{
 	cotypes_t type;
-	double retNumber;
+	size_t retNumber;
 	char* retString;
 	cJSON* retList;
 	char* errString;

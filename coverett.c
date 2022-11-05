@@ -235,8 +235,6 @@ result_t uniInvoke(device_t* dev, char* method, double* numvals, char** strvals,
 	}
 	else if (cJSON_IsArray(ans)){
 		if (cJSON_IsNumber(cJSON_GetArrayItem(ans, 0))){
-			cJSON* byte = NULL;
-			int i = 0;
 			int siz = cJSON_GetArraySize(ans);
 			char* bytes = (char*)malloc(siz);
 			for (int i = 0; i < siz; i++){

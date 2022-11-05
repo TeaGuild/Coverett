@@ -124,16 +124,16 @@ int main(int argc, char* argv[]){
 					fprintf(stderr, "Error while file importing: %s.\n", data.errString);
 					return -1;
 				}
+				recv += data.retNumber;
 				size_t wrt = fwrite(data.retString, 1, data.retNumber, local);
 				if (wrt != data.retNumber){
 					fclose(local);
 					putc('\n',stdout);
-					perror("Error while file importing");
+					fprintf(stderr, "Error while file importing: wrt %zu != retNumber %zu \n", wrt, data.retNumber);
 					return -1;
 				}
 				free(data.retString);
-				recv += data.retNumber;
-				printf("\rImporting... %.2f%%", (double)(recv * 100) / fil.size);
+				printf("Importing... %.2f%%\n", (double)(recv * 100) / fil.size);
 				fflush(stdout);
 				data = readImportFile(&dev);
 			}
